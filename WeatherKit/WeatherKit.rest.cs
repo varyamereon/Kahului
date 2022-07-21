@@ -214,6 +214,24 @@ internal partial class WeatherKit
 
     #region WeatherAlerts
 
+    public async Task<WeatherAlert> GetWeatherAlertAsync(string id, string language)
+    {
+        if (string.IsNullOrEmpty(language))
+        {
+            throw new ArgumentException("Language was invalid.");
+        }
+
+        var request = new HttpRequestMessage(HttpMethod.Get, $"weatherAlert/{language}/{id}");
+
+        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+
+        response.EnsureSuccessStatusCode();
+
+        var json=await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+        return JsonSerializer.Deserialize<WeatherAlert>(json) ?? new();
+    }
+
     #endregion
 }
 
