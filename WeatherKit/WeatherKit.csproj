@@ -11,7 +11,18 @@
     <Product>Kahului.WeatherKit</Product>
     <Description>A cross-platform library for Apple's WeatherKit. The library uses native code on iOS devices and REST calls on other platforms.</Description>
     <Copyright>(C) Will Beal 2022</Copyright>
+    <PackageProjectUrl>https://github.com/varyamereon/Kahului/</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/varyamereon/Kahului/WeatherKit</RepositoryUrl>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Users\willb\OneDrive\Spree Forty Three\Kahului\Images\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
