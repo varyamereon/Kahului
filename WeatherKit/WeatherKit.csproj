@@ -10,15 +10,23 @@
     <Authors>varyamereon</Authors>
     <Product>Kahului.WeatherKit</Product>
     <Description>A cross-platform library for Apple's WeatherKit. The library uses native code on iOS devices and REST calls on other platforms.</Description>
-    <Copyright>(C) Will Beal 2022</Copyright>
+    <Copyright>Copyright (c) Will Beal 2022</Copyright>
     <PackageProjectUrl>https://github.com/varyamereon/Kahului/</PackageProjectUrl>
     <PackageIcon>Logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/varyamereon/Kahului/WeatherKit</RepositoryUrl>
     <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <Version>1.0.0-alpha</Version>
+    <Company>Kahului</Company>
+    <PackageTags>apple;maui;weatherkit;weather;android;ios;winui</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\..\Users\willb\OneDrive\Spree Forty Three\Kahului\Images\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
