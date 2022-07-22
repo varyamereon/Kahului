@@ -34,7 +34,7 @@
   <p align="center">
     A helpful mix of libraries for .NET 6.
     <br />
-    <a href="https://github.com/varyamereon/kahului/wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://varyamereon.gitbook.io/kahului/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/varyamereon/kahului/issues">Report Bug</a>
@@ -78,7 +78,7 @@ Welcome to Kahului, a collection of libraries helping to make .NET better.
 
 ### Libraries
 
-* [WeatherKit](https://nuget.org/profiles/varyamereon) - A .NET wrapper for Apple's weather service.
+* [![WeatherKit][weatherkit-nuget-shield]][weatherkit-nuget-url] - A .NET wrapper for Apple's weather service.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -136,4 +136,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [nuget-url]: https://www.nuget.org/profiles/varyamereon
 [coffee-shield]: https://img.shields.io/badge/-buy_me_a_coffee-black.svg?style=for-the-badge&logo=buymeacoffee&colorB=555
 [coffee-url]: https://www.buymeacoffee.com/varyamereon
+[weatherkit-nuget-shield]: https://img.shields.io/nuget/dt/kahului.weatherkit?color=217ca3&label=WeatherKit&style=for-the-badge
+[weatherkit-nuget-url]: https://www.nuget.org/packages/Kahului.WeatherKit
 [product-screenshot]: images/screenshot.png
