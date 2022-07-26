@@ -12,13 +12,13 @@
     <Description>A cross-platform library for Apple's WeatherKit. The library uses native code on iOS devices and REST calls on other platforms.</Description>
     <Copyright>Copyright (c) Will Beal 2022</Copyright>
     <PackageProjectUrl>https://github.com/varyamereon/Kahului/</PackageProjectUrl>
-    <PackageIcon>Logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/varyamereon/Kahului/WeatherKit</RepositoryUrl>
     <PackageReleaseNotes>Minor changes including the ability to set the validity length of the JWT in the HTTP header.</PackageReleaseNotes>
     <Version>1.1.0-beta</Version>
     <Company>Kahului</Company>
     <PackageTags>apple;maui;weatherkit;weather;android;ios;winui</PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageIcon>Logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,6 +33,13 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <None Include="Logo.png">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
   </ItemGroup>
 
 </Project>
