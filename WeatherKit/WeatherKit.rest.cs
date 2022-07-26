@@ -1,7 +1,5 @@
 ﻿#if !IOS16_0_OR_GREATER && !MACCATALYST16_0_OR_GREATER
 
-using System.Collections.Specialized;
-using System.Diagnostics.Metrics;
 using System.Web;
 
 namespace Kahului.WeatherKit;
@@ -12,12 +10,12 @@ internal partial class WeatherKit
 
     public async Task<List<DataSet>> GetAvailableDataSetsAsync(double latitude, double longitude)
     {
-        if (latitude<-90 || latitude > 90)
+        if (latitude < -90 || latitude > 90)
         {
             throw new ArgumentException("Latitude was invalid.");
         }
 
-        if (longitude<-180 || longitude > 180)
+        if (longitude < -180 || longitude > 180)
         {
             throw new ArgumentException("Longitude was invalid.");
         }
@@ -168,7 +166,7 @@ internal partial class WeatherKit
 
         if (parameters.DailyStart is not null)
         {
-            queryString.Add("dailyStart", parameters.DailyStart?.ToUniversalTime().ToString("O")); 
+            queryString.Add("dailyStart", parameters.DailyStart?.ToUniversalTime().ToString("O"));
         }
 
         if (parameters.HourlyEnd is not null)
@@ -227,7 +225,7 @@ internal partial class WeatherKit
 
         response.EnsureSuccessStatusCode();
 
-        var json=await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
         return JsonSerializer.Deserialize<WeatherAlert>(json) ?? new();
     }

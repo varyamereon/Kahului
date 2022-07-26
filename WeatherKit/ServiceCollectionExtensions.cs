@@ -1,45 +1,41 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
 
 namespace Kahului.WeatherKit;
+/// <summary>
+/// Extensions for initializing WeatherKit.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
-    public static void AddWeatherKit(this IServiceCollection services, string privateKey, string keyId, string teamId, string serviceId)
+    /// <summary>
+    /// The name of the <see cref="HttpClient"/> created by WeatherKit.
+    /// </summary>
+    public const string weatherKitClientName = "WeatherKitClient";
+
+    /// <summary>
+    /// Configures and adds an instance of <see cref="IWeatherKit"/> to your services.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="privateKey">The private key you received in the p8 file from Apple.</param>
+    /// <param name="keyId">The 10 character identifier belonging to the key.</param>
+    /// <param name="teamId">The 10 character identifier of your Apple developer team.</param>
+    /// <param name="serviceId">The service identifier in the format com.example.name.</param>
+    /// <param name="tokenValidity">The validity of the generated token in minutes.</param>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="ArgumentException"></exception>
+    public static void AddWeatherKit(this IServiceCollection services, string privateKey, string keyId, string teamId, string serviceId, int tokenValidity = 1440)
     {
 #if !IOS16_0_OR_GREATER && !MACCATALYST16_0_OR_GREATER
-        services.AddHttpClient<IWeatherKit, WeatherKit>(client =>
+        if (string.IsNullOrEmpty(privateKey) || string.IsNullOrEmpty(keyId) || string.IsNullOrEmpty(keyId) || string.IsNullOrEmpty(serviceId))
+            throw new NullReferenceException("WeatherKit was initialized with a null value.");
+
+        if (tokenValidity < 1)
+            throw new ArgumentException("The token validitiy must be a positive number.");
+
+        services.AddHttpClient<IWeatherKit, WeatherKit>(weatherKitClientName, client =>
         {
-            var iat = (int)(DateTime.UtcNow - DateTime.UnixEpoch).TotalSeconds;
-            var exp = iat + (int)TimeSpan.FromDays(30).TotalSeconds;
+            var token = JwtHelper.GenerateToken(privateKey, keyId, teamId, serviceId, tokenValidity);
 
-            var privKeyBytes = Convert.FromBase64String(privateKey);
-            var privKey = ECDsa.Create();
-            privKey.ImportPkcs8PrivateKey(privKeyBytes, out var privBytesRead);
-            var securityKey = new ECDsaSecurityKey(privKey);
-
-            var header = new JwtHeader(new SigningCredentials(securityKey, SecurityAlgorithms.EcdsaSha256))
-            {
-                { JwtHeaderParameterNames.Kid, keyId },
-                { "id", $"{teamId}.{serviceId}" }
-            };
-
-            var payload = new JwtPayload(new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Iss, teamId),
-                new Claim(JwtRegisteredClaimNames.Iat, iat.ToString()),
-                new Claim(JwtRegisteredClaimNames.Exp, exp.ToString()),
-                new Claim(JwtRegisteredClaimNames.Sub, serviceId)
-            });
-
-            var handler = new JwtSecurityTokenHandler();
-
-            var token = new JwtSecurityToken(header, payload);
-            var raw = handler.WriteToken(token);
-
-            client.DefaultRequestHeaders.Authorization=new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", raw);
+            client.DefaultRequestHeaders.Authorization = new("Bearer", token);
             client.BaseAddress = new Uri("https://weatherkit.apple.com/api/v1/");
         });
 #endif
