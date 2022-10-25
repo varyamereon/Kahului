@@ -1,4 +1,4 @@
-﻿#if IOS16_0_OR_GREATER || MACCATALYST16_0_OR_GREATER
+﻿#if IOS16_OR_GREATER || MACCATALYST16_0_OR_GREATER
 
 using System;
 using System.Collections.Generic;

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32708.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherKit", "WeatherKit\WeatherKit.csproj", "{CEE848A5-4805-4A8B-BC62-3A224E163069}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KahuluiSampleApp", "KahuluiSampleApp\KahuluiSampleApp.csproj", "{84ACB61B-C9B6-4895-B31A-87DFFD1ECE89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KahuluiSampleApp", "KahuluiSampleApp\KahuluiSampleApp.csproj", "{84ACB61B-C9B6-4895-B31A-87DFFD1ECE89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo", "Geo\Geo.csproj", "{137EEA39-81B4-4003-9874-E2F116453EFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{84ACB61B-C9B6-4895-B31A-87DFFD1ECE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84ACB61B-C9B6-4895-B31A-87DFFD1ECE89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84ACB61B-C9B6-4895-B31A-87DFFD1ECE89}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{137EEA39-81B4-4003-9874-E2F116453EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137EEA39-81B4-4003-9874-E2F116453EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137EEA39-81B4-4003-9874-E2F116453EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137EEA39-81B4-4003-9874-E2F116453EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
